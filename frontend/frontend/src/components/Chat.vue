@@ -3,7 +3,7 @@ import { ref, onMounted, onUnmounted } from "vue";
 import { io } from "socket.io-client";
 
 const props = defineProps<{ room: string; playerName: string }>();
-const socket = io("http://localhost:4000"); // Remplace avec ton URL Render plus tard
+const socket = io(import.meta.env.VITE_BACKEND_URL);
 const players = ref<{ name: string }[]>([]);
 const message = ref("");
 const messages = ref<string[]>([]);
@@ -34,7 +34,7 @@ const sendMessage = () => {
 
 <template>
   <div>
-    <img src="https://ih1.redbubble.net/image.4769819458.0907/raf,360x360,075,t,fafafa:ca443f4786.jpg" alt="Pou" />
+    <!-- <img src="https://ih1.redbubble.net/image.4769819458.0907/raf,360x360,075,t,fafafa:ca443f4786.jpg" alt="Pou" /> -->
     <h2>Room: {{ room }}</h2>
     <h3>Joueurs:</h3>
     <ul>
